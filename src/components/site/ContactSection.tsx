@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Instagram, MapPin, Phone } from "lucide-react";
 
-// TODO (EmailJS): install @emailjs/browser and fill these in.
+// TODO (EmailJS): инсталирайте @emailjs/browser и попълнете ключовете тук.
 // const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
 // const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
 // const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-// Then in handleSubmit:
+// След това в handleSubmit:
 // await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form, { publicKey: EMAILJS_PUBLIC_KEY });
 
-// Placeholder contact details — replace with the real ones.
+// Данни за контакт — заменете с реалните.
 const PHONE = "+359 000 000 000";
 const INSTAGRAM_URL = "https://instagram.com/";
 
@@ -18,7 +18,7 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // EmailJS send goes here (see comments above).
+    // Тук се извиква EmailJS (виж коментарите по-горе).
     setSent(true);
   };
 
@@ -26,10 +26,10 @@ export function ContactSection() {
     <section id="contact" className="border-t border-border py-20">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-2">
         <div>
-          <h2 className="claw-rule text-3xl sm:text-4xl">Contact Us</h2>
+          <h2 className="claw-rule text-3xl sm:text-4xl">Свържете се с нас</h2>
           <p className="mt-6 max-w-md text-muted-foreground">
-            Tell us about your car and what you want done. We&apos;ll get back to you with details
-            and availability.
+            Опишете автомобила си и какво желаете да направим. Ще се свържем с вас с подробности и
+            свободни часове.
           </p>
 
           <ul className="mt-8 space-y-4 text-sm">
@@ -52,7 +52,7 @@ export function ContactSection() {
             </li>
             <li className="flex items-center gap-3">
               <MapPin size={18} className="shrink-0 text-primary" />
-              <span className="text-muted-foreground">Aytos, Burgas Region</span>
+              <span className="text-muted-foreground">Айтос, обл. Бургас</span>
             </li>
           </ul>
         </div>
@@ -64,7 +64,7 @@ export function ContactSection() {
           <div className="space-y-5">
             <div>
               <label htmlFor="name" className="text-xs font-semibold uppercase tracking-widest">
-                Name
+                Име
               </label>
               <input
                 id="name"
@@ -76,7 +76,7 @@ export function ContactSection() {
             </div>
             <div>
               <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-widest">
-                Phone
+                Телефон
               </label>
               <input
                 id="phone"
@@ -89,7 +89,7 @@ export function ContactSection() {
             </div>
             <div>
               <label htmlFor="message" className="text-xs font-semibold uppercase tracking-widest">
-                Message
+                Съобщение
               </label>
               <textarea
                 id="message"
@@ -104,11 +104,11 @@ export function ContactSection() {
               type="submit"
               className="btn-red w-full rounded-sm px-6 py-3 text-sm font-semibold uppercase tracking-widest"
             >
-              Send Message
+              Изпрати съобщение
             </button>
             {sent && (
               <p className="text-sm text-muted-foreground">
-                Thanks — your message is ready to send once email delivery is connected.
+                Благодарим — съобщението ще бъде изпратено, след като свържем имейл доставката.
               </p>
             )}
           </div>

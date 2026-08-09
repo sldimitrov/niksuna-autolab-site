@@ -1,16 +1,27 @@
+import logoAsset from "@/assets/logo.jpg.asset.json";
+
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#portfolio", label: "Work" },
-  { href: "#why", label: "Why Us" },
-  { href: "#contact", label: "Contact" },
+  { href: "#services", label: "Услуги" },
+  { href: "#portfolio", label: "Проекти" },
+  { href: "#why", label: "Защо нас" },
+  { href: "#contact", label: "Контакти" },
 ];
 
 export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur">
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:flex sm:justify-between">
-        <a href="#hero" className="min-w-0 truncate font-display text-lg font-bold tracking-wide">
-          Niksuna&apos;s <span className="text-primary">AutoLab</span>
+        <a href="#hero" className="flex min-w-0 items-center gap-2.5">
+          <img
+            src={logoAsset.url}
+            alt="Логото на Niksuna's AutoLab"
+            width={36}
+            height={36}
+            className="h-9 w-9 shrink-0 rounded-sm object-cover"
+          />
+          <span className="truncate font-display text-lg font-bold tracking-wide">
+            Niksuna&apos;s <span className="text-primary">AutoLab</span>
+          </span>
         </a>
         <ul className="hidden shrink-0 items-center gap-7 text-sm font-medium uppercase tracking-widest text-muted-foreground sm:flex">
           {links.map((l) => (
@@ -25,7 +36,7 @@ export function Nav() {
           href="#contact"
           className="btn-red shrink-0 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-widest sm:hidden"
         >
-          Contact
+          Контакти
         </a>
       </nav>
     </header>
