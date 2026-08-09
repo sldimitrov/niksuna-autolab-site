@@ -1,26 +1,24 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
-import galleryTint from "@/assets/gallery-tint.jpg";
-import galleryPpf from "@/assets/gallery-ppf.jpg";
-import galleryHeadliner from "@/assets/gallery-headliner.jpg";
-import galleryDoor from "@/assets/gallery-door.jpg";
-import gallerySpeaker from "@/assets/gallery-speaker.jpg";
-import galleryCarRear from "@/assets/gallery-car-rear.jpg";
-import galleryPolish from "@/assets/gallery-polish.jpg";
-import galleryInterior from "@/assets/gallery-interior.jpg";
+// Real shop photos, served via Lovable Assets pointers.
+import work1 from "@/assets/work-1.png.asset.json";
+import work2 from "@/assets/work-2.png.asset.json";
+import work3 from "@/assets/work-3.png.asset.json";
+import work4 from "@/assets/work-4.png.asset.json";
+import work5 from "@/assets/work-5.png.asset.json";
+import work6 from "@/assets/work-6.png.asset.json";
+import work7 from "@/assets/work-7.png.asset.json";
 
-// Placeholder gallery slots — swap `src` with real project photos.
-// `tag` supports before/after style pairs (e.g. "Before" / "After").
+// Слотове за галерия — сменяйте с нови снимки при нужда.
 const shots = [
-  { src: galleryHeadliner, alt: "Re-wrapped car headliner in black suede", tag: "Before" },
-  { src: galleryDoor, alt: "Door panel re-wrapped with red stitching", tag: "After" },
-  { src: gallerySpeaker, alt: "Speaker trim wrapped in leather", tag: "Detail" },
-  { src: galleryTint, alt: "Window tint film being applied to car glass", tag: "Before" },
-  { src: galleryCarRear, alt: "Black car with fully tinted rear windows", tag: "After" },
-  { src: galleryPpf, alt: "PPF film applied over a car headlight", tag: "PPF" },
-  { src: galleryPolish, alt: "Paint correction with a machine polisher", tag: "Before" },
-  { src: galleryInterior, alt: "Finished dark car interior with red ambient light", tag: "After" },
+  { src: work1.url, alt: "Бял VW Tiguan с фолирани стъкла", tag: "Фолиране" },
+  { src: work2.url, alt: "BMW 7 с демонтиран таван за претапициране", tag: "Преди" },
+  { src: work7.url, alt: "VW Golf с тъмно фолирани стъкла в бокса", tag: "След" },
+  { src: work3.url, alt: "Интериор на Mercedes AMG след обработка", tag: "Интериор" },
+  { src: work4.url, alt: "Audi TT с фолирани стъкла", tag: "Фолиране" },
+  { src: work5.url, alt: "Audi A3 с изваден таван преди претапициране", tag: "Преди" },
+  { src: work6.url, alt: "VW Tiguan с фолирани стъкла след обработка", tag: "След" },
 ];
 
 export function Gallery() {
@@ -38,10 +36,10 @@ export function Gallery() {
   return (
     <section id="portfolio" className="border-t border-border py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="claw-rule text-3xl sm:text-4xl">Our Work</h2>
+        <h2 className="claw-rule text-3xl sm:text-4xl">Наши проекти</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          A look at recent builds from the shop — interiors, film and glass. Tap any photo to
-          enlarge.
+          Част от последните ни автомобили — интериор, фолио и стъкла. Натиснете снимка за
+          увеличение.
         </p>
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
@@ -50,14 +48,12 @@ export function Gallery() {
               key={i}
               type="button"
               onClick={() => setActive(i)}
-              aria-label={`Enlarge photo: ${shot.alt}`}
+              aria-label={`Увеличи снимка: ${shot.alt}`}
               className="group relative aspect-square overflow-hidden rounded-sm border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <img
                 src={shot.src}
                 alt={shot.alt}
-                width={1024}
-                height={1024}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -79,7 +75,7 @@ export function Gallery() {
         >
           <button
             type="button"
-            aria-label="Close"
+            aria-label="Затвори"
             className="absolute right-4 top-4 rounded-sm border border-border p-2 text-foreground"
             onClick={() => setActive(null)}
           >
@@ -88,8 +84,6 @@ export function Gallery() {
           <img
             src={shots[active]!.src}
             alt={shots[active]!.alt}
-            width={1024}
-            height={1024}
             className="max-h-[85vh] w-auto max-w-full rounded-sm object-contain"
           />
         </div>
