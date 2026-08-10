@@ -12,13 +12,48 @@ import {
 
 import heroGarage from "@/assets/hero-garage.jpg";
 import logoAsset from "@/assets/logo.jpg.asset.json";
+import workHero from "@/assets/work-1.png.asset.json";
 import { Nav } from "@/components/site/Nav";
 import { Gallery } from "@/components/site/Gallery";
-import { ContactSection } from "@/components/site/ContactSection";
+import { ContactSection, LAT, LNG, PHONE, PHONE_TEL } from "@/components/site/ContactSection";
+import { Phone } from "lucide-react";
 
-const title = "Niksuna's AutoLab — Автодетайлинг в Айтос";
+const SITE = "https://niksuna-autolab-site.lovable.app";
+const title = "Фолиране и претапициране в Айтос | Niksuna's AutoLab";
 const description =
-  "Професионален автодетайлинг в Айтос, обл. Бургас: PPF защита на фарове, фолиране на автостъкла и претапициране на тавани, кори и колонки.";
+  "Фолиране на автостъкла, защитно фолио (PPF), претапициране на автотавани, chrome delete и полиране на фарове в Айтос, обл. Бургас. Обадете се: 0885 373 039.";
+const ogImage = `${SITE}${workHero.url}`;
+
+const localBusinessLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoBodyShop",
+  name: "Niksuna's AutoLab",
+  description,
+  url: SITE,
+  image: ogImage,
+  telephone: "+359885373039",
+  email: "nikolayyy03@gmail.com",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Айтос",
+    addressRegion: "обл. Бургас",
+    addressCountry: "BG",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: LAT, longitude: LNG },
+  areaServed: ["Айтос", "Бургас", "Карнобат", "Поморие"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Услуги",
+    itemListElement: [
+      "Фолиране на автостъкла",
+      "Защитно фолио (PPF) за фарове и стопове",
+      "Претапициране на автотавани и интериорни части",
+      "Chrome delete / Shadowline",
+      "Полиране на фарове",
+    ].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
+  },
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,6 +64,16 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: SITE },
+      { property: "og:locale", content: "bg_BG" },
+      { property: "og:image", content: ogImage },
+      { name: "twitter:image", content: ogImage },
+      { name: "geo.placename", content: "Айтос, обл. Бургас" },
+      { name: "geo.position", content: `${LAT};${LNG}` },
+    ],
+    links: [{ rel: "canonical", href: SITE }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(localBusinessLd) },
     ],
   }),
   component: Index,
@@ -118,16 +163,27 @@ function Index() {
               <br />
               <span className="text-primary">AutoLab</span>
             </h1>
+            <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-foreground/80">
+              Фолиране · PPF · Претапициране на тавани — Айтос
+            </p>
             <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
               Професионален автодетайлинг — PPF защита, фолиране на автостъкла и претапициране на
               интериор.
             </p>
-            <a
-              href="#contact"
-              className="btn-red mt-9 inline-block rounded-sm px-8 py-4 text-sm font-semibold uppercase tracking-widest"
-            >
-              Свържете се с нас
-            </a>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                href="#contact"
+                className="btn-red rounded-sm px-8 py-4 text-sm font-semibold uppercase tracking-widest"
+              >
+                Свържете се с нас
+              </a>
+              <a
+                href={`tel:${PHONE_TEL}`}
+                className="inline-flex items-center gap-2 rounded-sm border border-border bg-background/60 px-8 py-4 text-sm font-semibold uppercase tracking-widest backdrop-blur hover:border-primary hover:text-primary"
+              >
+                <Phone size={16} /> {PHONE}
+              </a>
+            </div>
           </div>
         </section>
 
