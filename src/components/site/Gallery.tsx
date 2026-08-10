@@ -143,7 +143,7 @@ export function Gallery() {
             <img
               src={shots[active]!.src}
               alt={shots[active]!.alt}
-              className="max-h-[70vh] w-full rounded-sm object-contain"
+              className="min-w-0 flex-1 max-h-[65vh] rounded-sm object-contain"
             />
             <button
               type="button"
