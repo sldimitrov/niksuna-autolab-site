@@ -1,4 +1,7 @@
+import { Phone } from "lucide-react";
+
 import logoAsset from "@/assets/logo.jpg.asset.json";
+import { PHONE, PHONE_TEL } from "./ContactSection";
 
 const links = [
   { href: "#services", label: "Услуги" },
@@ -33,10 +36,13 @@ export function Nav() {
           ))}
         </ul>
         <a
-          href="#contact"
-          className="btn-red shrink-0 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-widest sm:hidden"
+          href={`tel:${PHONE_TEL}`}
+          aria-label={`Обади се на ${PHONE}`}
+          className="btn-red inline-flex shrink-0 items-center gap-2 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-widest"
         >
-          Контакти
+          <Phone size={14} />
+          <span className="hidden sm:inline">{PHONE}</span>
+          <span className="sm:hidden">Обади се</span>
         </a>
       </nav>
     </header>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Phone, X } from "lucide-react";
 
 // Real shop photos, served via Lovable Assets pointers.
 import work1 from "@/assets/work-1.png.asset.json";
@@ -19,6 +19,8 @@ import tapi7 from "@/assets/tapi-7.jpg.asset.json";
 import tapi8 from "@/assets/tapi-8.jpg.asset.json";
 import tapi9 from "@/assets/tapi-9.jpg.asset.json";
 import tapi10 from "@/assets/tapi-10.jpg.asset.json";
+
+import { PHONE_TEL } from "./ContactSection";
 
 type Shot = { src: string; alt: string; tag: string };
 
@@ -54,6 +56,8 @@ export function Gallery() {
     if (active === null) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setActive(null);
+      if (e.key === "ArrowRight") setActive((i) => ((i ?? 0) + 1) % shots.length);
+      if (e.key === "ArrowLeft") setActive((i) => ((i ?? 0) - 1 + shots.length) % shots.length);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -90,28 +94,95 @@ export function Gallery() {
             </button>
           ))}
         </div>
+
+        <div className="mt-10 flex flex-wrap items-center gap-3">
+          <a
+            href="#contact"
+            className="btn-red rounded-sm px-7 py-3.5 text-sm font-semibold uppercase tracking-widest"
+          >
+            Свържете се с нас
+          </a>
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="inline-flex items-center gap-2 rounded-sm border border-border px-7 py-3.5 text-sm font-semibold uppercase tracking-widest hover:border-primary hover:text-primary"
+          >
+            <Phone size={16} /> {"Обади се"}
+          </a>
+        </div>
       </div>
 
       {active !== null && (
         <div
           role="dialog"
           aria-modal="true"
+          aria-label="Преглед на снимка"
           onClick={() => setActive(null)}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-background/95 p-4"
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-4 bg-background/95 p-4"
         >
           <button
             type="button"
             aria-label="Затвори"
-            className="absolute right-4 top-4 rounded-sm border border-border p-2 text-foreground"
+            className="absolute right-4 top-4 rounded-sm border border-border p-2 text-foreground hover:border-primary hover:text-primary"
             onClick={() => setActive(null)}
           >
             <X size={18} />
           </button>
-          <img
-            src={shots[active]!.src}
-            alt={shots[active]!.alt}
-            className="max-h-[85vh] w-auto max-w-full rounded-sm object-contain"
-          />
+
+          <div className="w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={shots[active]!.src}
+              alt={shots[active]!.alt}
+              className="mx-auto max-h-[62vh] w-auto max-w-full rounded-sm object-contain"
+            />
+          </div>
+
+          <button
+            type="button"
+            aria-label="Предишна снимка"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive((i) => ((i ?? 0) - 1 + shots.length) % shots.length);
+            }}
+            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-sm border border-border bg-card/90 p-2.5 hover:border-primary hover:text-primary"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            type="button"
+            aria-label="Следваща снимка"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive((i) => ((i ?? 0) + 1) % shots.length);
+            }}
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm border border-border bg-card/90 p-2.5 hover:border-primary hover:text-primary"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          <div
+            className="flex w-full max-w-4xl flex-col items-center gap-3 text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-sm text-muted-foreground">{shots[active]!.alt}</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              {active + 1} / {shots.length}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="#contact"
+                onClick={() => setActive(null)}
+                className="btn-red rounded-sm px-6 py-3 text-xs font-semibold uppercase tracking-widest"
+              >
+                Искам същото
+              </a>
+              <a
+                href={`tel:${PHONE_TEL}`}
+                className="inline-flex items-center gap-2 rounded-sm border border-border px-6 py-3 text-xs font-semibold uppercase tracking-widest hover:border-primary hover:text-primary"
+              >
+                <Phone size={14} /> Обади се
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </section>
