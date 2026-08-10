@@ -1,21 +1,28 @@
 import { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, Phone, X } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Phone, X } from "lucide-react";
 
 import { categories, categoryById, type CategoryId, shots } from "@/data/gallery";
 
 import { PHONE_TEL } from "./ContactSection";
 
+const INITIAL_VISIBLE = 12;
+
 export function Gallery() {
   const [filter, setFilter] = useState<CategoryId | "all">("all");
   const [active, setActive] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const visible = useMemo(
     () => (filter === "all" ? shots : shots.filter((s) => s.categoryId === filter)),
     [filter],
   );
 
+  const displayed = showAll ? visible : visible.slice(0, INITIAL_VISIBLE);
+  const hiddenCount = visible.length - displayed.length;
+
   useEffect(() => {
     setActive(null);
+    setShowAll(false);
   }, [filter]);
 
   useEffect(() => {
@@ -79,34 +86,56 @@ export function Gallery() {
         </div>
 
         {visible.length > 0 ? (
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4">
-            {visible.map((shot, i) => {
-              const cat = categoryById.get(shot.categoryId)!;
-              return (
-                <button
-                  key={shot.src}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  aria-label={`Увеличи снимка: ${shot.alt}`}
-                  className="group relative aspect-square overflow-hidden rounded-sm border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span
-                    title={cat.label}
-                    className="btn-red absolute left-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-full"
+          <>
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4">
+              {displayed.map((shot, i) => {
+                const cat = categoryById.get(shot.categoryId)!;
+                return (
+                  <button
+                    key={shot.src}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    aria-label={`Увеличи снимка: ${shot.alt}`}
+                    className="group relative aspect-square overflow-hidden rounded-sm border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <cat.icon size={15} />
-                  </span>
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span
+                      title={cat.label}
+                      className="btn-red absolute left-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-full"
+                    >
+                      <cat.icon size={15} />
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {visible.length > INITIAL_VISIBLE && (
+              <div className="mt-6 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAll((v) => !v)}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-border px-6 text-sm font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
+                >
+                  {showAll ? (
+                    <>
+                      <ChevronUp size={16} /> Покажи по-малко
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown size={16} /> Покажи още ({hiddenCount})
+                    </>
+                  )}
                 </button>
-              );
-            })}
-          </div>
+              </div>
+            )}
+          </>
         ) : (
           <div className="mt-8 flex flex-col items-center gap-4 rounded-sm border border-dashed border-border px-6 py-16 text-center">
             {activeCategory && (
