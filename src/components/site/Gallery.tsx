@@ -128,32 +128,36 @@ export function Gallery() {
             <X size={18} />
           </button>
 
-          <div
-            className="flex w-full max-w-4xl items-center gap-2 sm:gap-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              aria-label="Предишна снимка"
-              onClick={() => setActive((i) => ((i ?? 0) - 1 + shots.length) % shots.length)}
-              className="shrink-0 rounded-sm border border-border bg-card/80 p-2.5 hover:border-primary hover:text-primary"
-            >
-              <ChevronLeft size={20} />
-            </button>
+          <div className="w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
             <img
               src={shots[active]!.src}
               alt={shots[active]!.alt}
-              className="min-w-0 flex-1 max-h-[65vh] rounded-sm object-contain"
+              className="mx-auto max-h-[62vh] w-auto max-w-full rounded-sm object-contain"
             />
-            <button
-              type="button"
-              aria-label="Следваща снимка"
-              onClick={() => setActive((i) => ((i ?? 0) + 1) % shots.length)}
-              className="shrink-0 rounded-sm border border-border bg-card/80 p-2.5 hover:border-primary hover:text-primary"
-            >
-              <ChevronRight size={20} />
-            </button>
           </div>
+
+          <button
+            type="button"
+            aria-label="Предишна снимка"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive((i) => ((i ?? 0) - 1 + shots.length) % shots.length);
+            }}
+            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-sm border border-border bg-card/90 p-2.5 hover:border-primary hover:text-primary"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            type="button"
+            aria-label="Следваща снимка"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive((i) => ((i ?? 0) + 1) % shots.length);
+            }}
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm border border-border bg-card/90 p-2.5 hover:border-primary hover:text-primary"
+          >
+            <ChevronRight size={20} />
+          </button>
 
           <div
             className="flex w-full max-w-4xl flex-col items-center gap-3 text-center"
