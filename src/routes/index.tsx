@@ -11,8 +11,7 @@ import {
 } from "lucide-react";
 
 import heroGarage from "@/assets/hero-garage.jpg";
-import logoAsset from "@/assets/logo.jpg.asset.json";
-import workHero from "@/assets/work-1.png.asset.json";
+import ogPhoto from "@/assets/folio/1.jpg";
 import { Nav } from "@/components/site/Nav";
 import { Gallery } from "@/components/site/Gallery";
 import { ContactSection, LAT, LNG, PHONE, PHONE_TEL } from "@/components/site/ContactSection";
@@ -22,7 +21,7 @@ const SITE = "https://niksuna-autolab-site.lovable.app";
 const title = "Фолиране и претапициране в Айтос | Niksuna's AutoLab";
 const description =
   "Фолиране на автостъкла, защитно фолио (PPF), претапициране на автотавани, chrome delete и полиране на фарове в Айтос, обл. Бургас. Обадете се: 0885 373 039.";
-const ogImage = `${SITE}${workHero.url}`;
+const ogImage = `${SITE}${ogPhoto}`;
 
 const localBusinessLd = {
   "@context": "https://schema.org",
@@ -146,7 +145,7 @@ function Index() {
           <div className="hero-overlay absolute inset-0" />
           <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 pt-32 sm:pb-24">
             <img
-              src={logoAsset.url}
+              src="/favicon.png"
               alt="Логото на Niksuna's AutoLab"
               width={88}
               height={88}

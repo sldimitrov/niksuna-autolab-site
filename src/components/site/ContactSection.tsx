@@ -1,18 +1,5 @@
 import { useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  Instagram,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
-
-// TODO (EmailJS): инсталирайте @emailjs/browser и попълнете ключовете тук.
-// const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-// const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-// const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+import { ArrowLeft, ArrowRight, Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 export const PHONE = "0885 373 039";
 export const PHONE_TEL = "+359885373039";
@@ -46,14 +33,6 @@ export function ContactSection() {
   const [step, setStep] = useState(0);
   const [service, setService] = useState("");
   const [timing, setTiming] = useState("");
-  const [form, setForm] = useState({ name: "", phone: "", car: "", message: "" });
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Тук се извиква EmailJS с { service, timing, ...form }.
-    setSent(true);
-  };
 
   return (
     <section id="contact" className="border-t border-border py-20">
@@ -130,10 +109,7 @@ export function ContactSection() {
           </div>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="h-fit rounded-sm border border-border bg-card p-6 sm:p-8"
-        >
+        <div className="h-fit rounded-sm border border-border bg-card p-6 sm:p-8">
           {/* прогрес */}
           <div className="flex items-center gap-2">
             {[0, 1, 2].map((i) => (
@@ -210,79 +186,28 @@ export function ContactSection() {
           )}
 
           {step === 2 && (
-            <div className="mt-5 space-y-5">
+            <div className="mt-5 space-y-5 text-center">
               <div>
-                <h3 className="text-2xl">Как да се свържем с вас?</h3>
+                <h3 className="text-2xl">Обадете се на Никсуна</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   <span className="text-foreground">{service}</span> · {timing}
                 </p>
               </div>
 
-              <div>
-                <label htmlFor="name" className="text-xs font-semibold uppercase tracking-widest">
-                  Име
-                </label>
-                <input
-                  id="name"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="mt-2 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-widest">
-                  Телефон
-                </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  required
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="mt-2 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-                />
-              </div>
-              <div>
-                <label htmlFor="car" className="text-xs font-semibold uppercase tracking-widest">
-                  Автомобил (марка, модел, година)
-                </label>
-                <input
-                  id="car"
-                  value={form.car}
-                  onChange={(e) => setForm({ ...form, car: e.target.value })}
-                  className="mt-2 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="text-xs font-semibold uppercase tracking-widest">
-                  Допълнителни детайли (по избор)
-                </label>
-                <textarea
-                  id="message"
-                  rows={3}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="mt-2 w-full resize-none rounded-sm border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="btn-red w-full rounded-sm px-6 py-3 text-sm font-semibold uppercase tracking-widest"
+              <a
+                href={`tel:${PHONE_TEL}`}
+                className="btn-red flex flex-col items-center gap-1.5 rounded-sm px-6 py-6"
               >
-                Изпрати запитване
-              </button>
+                <Phone size={28} />
+                <span className="text-3xl font-bold tracking-wide">{PHONE}</span>
+                <span className="text-xs font-semibold uppercase tracking-widest opacity-80">
+                  Натиснете за обаждане
+                </span>
+              </a>
 
-              <div className="rounded-sm border border-border p-4 text-sm">
-                <p className="text-muted-foreground">Бърз отговор? Обадете се директно:</p>
-                <a
-                  href={`tel:${PHONE_TEL}`}
-                  className="mt-2 inline-flex items-center gap-2 font-semibold text-primary"
-                >
-                  <Phone size={16} /> {PHONE}
-                </a>
-              </div>
+              <p className="text-xs text-muted-foreground">
+                Обадете се директно — така най-бързо ще получите отговор.
+              </p>
 
               <button
                 type="button"
@@ -291,15 +216,9 @@ export function ContactSection() {
               >
                 <ArrowLeft size={14} /> Назад
               </button>
-
-              {sent && (
-                <p className="flex items-center gap-2 text-sm text-primary">
-                  <Check size={16} /> Благодарим! Ще се свържем с вас на посочения телефон.
-                </p>
-              )}
             </div>
           )}
-        </form>
+        </div>
       </div>
     </section>
   );

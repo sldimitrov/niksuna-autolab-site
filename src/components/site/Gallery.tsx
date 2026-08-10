@@ -1,19 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import {
-  Armchair,
-  ChevronLeft,
-  ChevronRight,
-  Lightbulb,
-  type LucideIcon,
-  Phone,
-  Shield,
-  Sun,
-  Wand2,
-  X,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Phone, X } from "lucide-react";
+
+import { categories, categoryById, type CategoryId, shots } from "@/data/gallery";
 
 import { PHONE_TEL } from "./ContactSection";
-
 
 export function Gallery() {
   const [filter, setFilter] = useState<CategoryId | "all">("all");
@@ -113,11 +103,6 @@ export function Gallery() {
                   >
                     <cat.icon size={15} />
                   </span>
-                  {shot.note && (
-                    <span className="absolute bottom-2 left-2 rounded-sm bg-background/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                      {shot.note}
-                    </span>
-                  )}
                 </button>
               );
             })}
