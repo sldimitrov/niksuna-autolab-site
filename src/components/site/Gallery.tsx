@@ -36,7 +36,7 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="claw-rule text-3xl sm:text-4xl">Наши проекти</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          Разгледайте завършени автомобили по услуга — претапициране на тавани, фолиране на стъкла и
+          Разгледайте завършени автомобили по услуга - претапициране на тавани, фолиране на стъкла и
           още. Натиснете снимка за увеличение.
         </p>
 

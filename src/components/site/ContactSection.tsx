@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Instagram, Mail, MapPin, Phone } from "lucide-re
 export const PHONE = "0885 373 039";
 export const PHONE_TEL = "+359885373039";
 const EMAIL = "nikolayyy03@gmail.com";
-const INSTAGRAM_URL = "https://instagram.com/";
+const INSTAGRAM_URL = "https://www.instagram.com/niksunas_autolab/";
 
 // 42°42'07.6"N 27°15'24.8"E
 export const LAT = 42.702111;
@@ -188,7 +188,7 @@ export function ContactSection() {
           {step === 2 && (
             <div className="mt-5 space-y-5 text-center">
               <div>
-                <h3 className="text-2xl">Обадете се на Никсуна</h3>
+                <h3 className="text-2xl">Обадете се на Никсъна</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   <span className="text-foreground">{service}</span> · {timing}
                 </p>
@@ -206,7 +206,7 @@ export function ContactSection() {
               </a>
 
               <p className="text-xs text-muted-foreground">
-                Обадете се директно — така най-бързо ще получите отговор.
+                Обадете се директно - така най-бързо ще получите отговор.
               </p>
 
               <button

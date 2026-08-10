@@ -232,7 +232,7 @@ function Index() {
           <p>
             Website by{" "}
             <a
-              href="https://aytosonline.com"
+              href="https://aytos.online"
               target="_blank"
               rel="noreferrer"
               className="text-foreground hover:text-primary"
