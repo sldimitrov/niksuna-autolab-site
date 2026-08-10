@@ -68,7 +68,7 @@ TECHNICAL NOTES:
 
 - No pricing/price list anywhere in the content or code
 
-- Footer: small credit line "Website by Aytos Online" linking to aytosonline.com
+- Footer: small credit line "Website by Aytos Online" linking to aytos.online
 
 This project was built with [Lovable](https://lovable.dev).
 

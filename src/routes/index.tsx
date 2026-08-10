@@ -11,8 +11,7 @@ import {
 } from "lucide-react";
 
 import heroGarage from "@/assets/hero-garage.jpg";
-import logoAsset from "@/assets/logo.jpg.asset.json";
-import workHero from "@/assets/work-1.png.asset.json";
+import ogPhoto from "@/assets/folio/1.jpg";
 import { Nav } from "@/components/site/Nav";
 import { Gallery } from "@/components/site/Gallery";
 import { ContactSection, LAT, LNG, PHONE, PHONE_TEL } from "@/components/site/ContactSection";
@@ -22,7 +21,7 @@ const SITE = "https://niksuna-autolab-site.lovable.app";
 const title = "Фолиране и претапициране в Айтос | Niksuna's AutoLab";
 const description =
   "Фолиране на автостъкла, защитно фолио (PPF), претапициране на автотавани, chrome delete и полиране на фарове в Айтос, обл. Бургас. Обадете се: 0885 373 039.";
-const ogImage = `${SITE}${workHero.url}`;
+const ogImage = `${SITE}${ogPhoto}`;
 
 const localBusinessLd = {
   "@context": "https://schema.org",
@@ -72,9 +71,7 @@ export const Route = createFileRoute("/")({
       { name: "geo.position", content: `${LAT};${LNG}` },
     ],
     links: [{ rel: "canonical", href: SITE }],
-    scripts: [
-      { type: "application/ld+json", children: JSON.stringify(localBusinessLd) },
-    ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(localBusinessLd) }],
   }),
   component: Index,
 });
@@ -112,7 +109,6 @@ const services = [
   },
 ];
 
-
 const trust = [
   {
     icon: BadgeCheck,
@@ -149,7 +145,7 @@ function Index() {
           <div className="hero-overlay absolute inset-0" />
           <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 pt-32 sm:pb-24">
             <img
-              src={logoAsset.url}
+              src="/favicon.png"
               alt="Логото на Niksuna's AutoLab"
               width={88}
               height={88}
@@ -158,7 +154,7 @@ function Index() {
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
               Айтос, обл. Бургас
             </p>
-            <h1 className="mt-4 text-5xl leading-[0.95] sm:text-7xl lg:text-8xl">
+            <h1 className="mt-4 text-4xl leading-[0.95] sm:text-6xl md:text-7xl lg:text-8xl">
               Niksuna&apos;s
               <br />
               <span className="text-primary">AutoLab</span>
@@ -191,7 +187,7 @@ function Index() {
         <section id="services" className="py-20">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="claw-rule text-3xl sm:text-4xl">Услуги</h2>
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
               {services.map((s) => (
                 <article
                   key={s.title}
@@ -213,7 +209,7 @@ function Index() {
         <section id="why" className="border-t border-border py-20">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="claw-rule text-3xl sm:text-4xl">Защо да изберете нас</h2>
-            <div className="mt-10 grid gap-8 sm:grid-cols-3">
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
               {trust.map((t) => (
                 <div key={t.title} className="flex gap-4">
                   <t.icon size={22} className="mt-1 shrink-0 text-primary" />
@@ -236,7 +232,7 @@ function Index() {
           <p>
             Website by{" "}
             <a
-              href="https://aytosonline.com"
+              href="https://aytos.online"
               target="_blank"
               rel="noreferrer"
               className="text-foreground hover:text-primary"
