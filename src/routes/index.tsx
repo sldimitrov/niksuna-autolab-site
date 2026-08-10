@@ -1,5 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Armchair, Shield, Sun, MapPin, Sparkles, BadgeCheck } from "lucide-react";
+import {
+  Armchair,
+  Shield,
+  Sun,
+  MapPin,
+  Sparkles,
+  BadgeCheck,
+  Wand2,
+  Lightbulb,
+} from "lucide-react";
 
 import heroGarage from "@/assets/hero-garage.jpg";
 import logoAsset from "@/assets/logo.jpg.asset.json";
@@ -27,12 +36,6 @@ export const Route = createFileRoute("/")({
 
 const services = [
   {
-    icon: Armchair,
-    title: "Претапициране на интериор",
-    sub: "Тавани / кори / колонки",
-    text: "Тавани, кори на врати и колонки, претапицирани с нови материали за фабрично изпипан вид.",
-  },
-  {
     icon: Sun,
     title: "Фолиране на автостъкла",
     sub: "Автомобилно фолио за стъкла",
@@ -40,11 +43,30 @@ const services = [
   },
   {
     icon: Shield,
-    title: "PPF защита",
-    sub: "PPF фарове и боя",
-    text: "Защитно фолио за фарове и лак — предпазва от камъчета, надрасквания и пожълтяване.",
+    title: "Защитно фолио (PPF)",
+    sub: "Фарове, стопове и други елементи",
+    text: "Защитно фолио за фарове, стопове и детайли — предпазва от камъчета, надрасквания и пожълтяване.",
+  },
+  {
+    icon: Armchair,
+    title: "Претапициране на автотавани",
+    sub: "Кори на врати, колонки, сенници",
+    text: "Тавани и интериорни части, претапицирани с нови материали за фабрично изпипан вид.",
+  },
+  {
+    icon: Wand2,
+    title: "Chrome delete / Shadowline",
+    sub: "Затъмняване на хромовите елементи",
+    text: "Хромът по решетки, лайсни и рамки на стъкла става черен — матов или гланц, по избор.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Полиране на фарове",
+    sub: "Възстановяване на прозрачност",
+    text: "Премахваме пожълтяването и мътността, за да светят фаровете отново като нови.",
   },
 ];
+
 
 const trust = [
   {

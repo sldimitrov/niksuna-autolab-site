@@ -35,10 +35,17 @@ export function ContactSection() {
           <ul className="mt-8 space-y-4 text-sm">
             <li className="flex items-center gap-3">
               <Phone size={18} className="shrink-0 text-primary" />
-              <a href={`tel:${PHONE.replace(/\s/g, "")}`} className="hover:text-primary">
+              <a href={`tel:+359${PHONE.replace(/\s/g, "").slice(1)}`} className="hover:text-primary">
                 {PHONE}
               </a>
             </li>
+            <li className="flex items-center gap-3">
+              <Mail size={18} className="shrink-0 text-primary" />
+              <a href={`mailto:${EMAIL}`} className="hover:text-primary">
+                {EMAIL}
+              </a>
+            </li>
+
             <li className="flex items-center gap-3">
               <Instagram size={18} className="shrink-0 text-primary" />
               <a
