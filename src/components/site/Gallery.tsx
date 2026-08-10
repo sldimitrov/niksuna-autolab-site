@@ -9,9 +9,33 @@ import work4 from "@/assets/work-4.png.asset.json";
 import work5 from "@/assets/work-5.png.asset.json";
 import work6 from "@/assets/work-6.png.asset.json";
 import work7 from "@/assets/work-7.png.asset.json";
+import tapi1 from "@/assets/tapi-1.jpg.asset.json";
+import tapi2 from "@/assets/tapi-2.jpg.asset.json";
+import tapi3 from "@/assets/tapi-3.jpg.asset.json";
+import tapi4 from "@/assets/tapi-4.jpg.asset.json";
+import tapi5 from "@/assets/tapi-5.jpg.asset.json";
+import tapi6 from "@/assets/tapi-6.jpg.asset.json";
+import tapi7 from "@/assets/tapi-7.jpg.asset.json";
+import tapi8 from "@/assets/tapi-8.jpg.asset.json";
+import tapi9 from "@/assets/tapi-9.jpg.asset.json";
+import tapi10 from "@/assets/tapi-10.jpg.asset.json";
 
-// Слотове за галерия — сменяйте с нови снимки при нужда.
-const shots = [
+type Shot = { src: string; alt: string; tag: string };
+
+const upholstery: Shot[] = [
+  { src: tapi10.url, alt: "Черен таван и интериорни части след претапициране с велур", tag: "Претапициране" },
+  { src: tapi9.url, alt: "Оригинален бежов таван и интериорни части преди претапициране", tag: "Преди" },
+  { src: tapi1.url, alt: "Претапициран таван на Audi в черен велур", tag: "Претапициране" },
+  { src: tapi2.url, alt: "Таван, претапициран в бордо велур", tag: "Претапициране" },
+  { src: tapi3.url, alt: "Претапициран таван на VW Passat в черен велур", tag: "Претапициране" },
+  { src: tapi4.url, alt: "Детайл от претапициран таван със сенници и плафон", tag: "Детайл" },
+  { src: tapi5.url, alt: "Близък план на велурена материя на автотаван", tag: "Детайл" },
+  { src: tapi6.url, alt: "Претапицирани сенници в бежов велур", tag: "Сенници" },
+  { src: tapi7.url, alt: "Претапициран таван и колонки в Mercedes отвътре", tag: "Интериор" },
+  { src: tapi8.url, alt: "Претапициран таван на Audi, монтиран в автомобила", tag: "Интериор" },
+];
+
+const filmwork: Shot[] = [
   { src: work1.url, alt: "Бял VW Tiguan с фолирани стъкла", tag: "Фолиране" },
   { src: work2.url, alt: "BMW 7 с демонтиран таван за претапициране", tag: "Преди" },
   { src: work7.url, alt: "VW Golf с тъмно фолирани стъкла в бокса", tag: "След" },
@@ -20,6 +44,8 @@ const shots = [
   { src: work5.url, alt: "Audi A3 с изваден таван преди претапициране", tag: "Преди" },
   { src: work6.url, alt: "VW Tiguan с фолирани стъкла след обработка", tag: "След" },
 ];
+
+const shots: Shot[] = [...upholstery, ...filmwork];
 
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null);
@@ -38,8 +64,8 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="claw-rule text-3xl sm:text-4xl">Наши проекти</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          Част от последните ни автомобили — интериор, фолио и стъкла. Натиснете снимка за
-          увеличение.
+          Част от последните ни автомобили — претапициране на тавани и интериорни части, фолио и
+          стъкла. Натиснете снимка за увеличение.
         </p>
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">

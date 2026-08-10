@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Instagram, MapPin, Phone } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 // TODO (EmailJS): инсталирайте @emailjs/browser и попълнете ключовете тук.
 // const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
@@ -8,8 +8,8 @@ import { Instagram, MapPin, Phone } from "lucide-react";
 // След това в handleSubmit:
 // await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form, { publicKey: EMAILJS_PUBLIC_KEY });
 
-// Данни за контакт — заменете с реалните.
-const PHONE = "+359 000 000 000";
+const PHONE = "0885 373 039";
+const EMAIL = "nikolayyy03@gmail.com";
 const INSTAGRAM_URL = "https://instagram.com/";
 
 export function ContactSection() {
@@ -35,10 +35,17 @@ export function ContactSection() {
           <ul className="mt-8 space-y-4 text-sm">
             <li className="flex items-center gap-3">
               <Phone size={18} className="shrink-0 text-primary" />
-              <a href={`tel:${PHONE.replace(/\s/g, "")}`} className="hover:text-primary">
+              <a href={`tel:+359${PHONE.replace(/\s/g, "").slice(1)}`} className="hover:text-primary">
                 {PHONE}
               </a>
             </li>
+            <li className="flex items-center gap-3">
+              <Mail size={18} className="shrink-0 text-primary" />
+              <a href={`mailto:${EMAIL}`} className="hover:text-primary">
+                {EMAIL}
+              </a>
+            </li>
+
             <li className="flex items-center gap-3">
               <Instagram size={18} className="shrink-0 text-primary" />
               <a
