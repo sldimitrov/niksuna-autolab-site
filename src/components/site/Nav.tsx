@@ -1,4 +1,7 @@
+import { Phone } from "lucide-react";
+
 import logoAsset from "@/assets/logo.jpg.asset.json";
+import { PHONE, PHONE_TEL } from "./ContactSection";
 
 const links = [
   { href: "#services", label: "Услуги" },
