@@ -72,9 +72,7 @@ export const Route = createFileRoute("/")({
       { name: "geo.position", content: `${LAT};${LNG}` },
     ],
     links: [{ rel: "canonical", href: SITE }],
-    scripts: [
-      { type: "application/ld+json", children: JSON.stringify(localBusinessLd) },
-    ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(localBusinessLd) }],
   }),
   component: Index,
 });
@@ -111,7 +109,6 @@ const services = [
     text: "Премахваме пожълтяването и мътността, за да светят фаровете отново като нови.",
   },
 ];
-
 
 const trust = [
   {
@@ -158,7 +155,7 @@ function Index() {
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
               Айтос, обл. Бургас
             </p>
-            <h1 className="mt-4 text-5xl leading-[0.95] sm:text-7xl lg:text-8xl">
+            <h1 className="mt-4 text-4xl leading-[0.95] sm:text-6xl md:text-7xl lg:text-8xl">
               Niksuna&apos;s
               <br />
               <span className="text-primary">AutoLab</span>
@@ -191,7 +188,7 @@ function Index() {
         <section id="services" className="py-20">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="claw-rule text-3xl sm:text-4xl">Услуги</h2>
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
               {services.map((s) => (
                 <article
                   key={s.title}
@@ -213,7 +210,7 @@ function Index() {
         <section id="why" className="border-t border-border py-20">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="claw-rule text-3xl sm:text-4xl">Защо да изберете нас</h2>
-            <div className="mt-10 grid gap-8 sm:grid-cols-3">
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
               {trust.map((t) => (
                 <div key={t.title} className="flex gap-4">
                   <t.icon size={22} className="mt-1 shrink-0 text-primary" />
