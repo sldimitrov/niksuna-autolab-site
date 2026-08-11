@@ -1,5 +1,5 @@
 import { Phone } from "lucide-react";
-
+import logoGarage from "@/assets/logo.jpg";
 import { PHONE, PHONE_TEL } from "./ContactSection";
 
 const links = [
@@ -15,7 +15,7 @@ export function Nav() {
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:flex sm:justify-between">
         <a href="#hero" className="flex min-w-0 items-center gap-2.5">
           <img
-            src="/favicon.png"
+            src={logoGarage}
             alt="Логото на Niksuna's AutoLab"
             width={36}
             height={36}

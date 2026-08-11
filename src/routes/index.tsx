@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import heroGarage from "@/assets/car.jpg";
+import logoGarage from "@/assets/logo.jpg";
 import ogPhoto from "@/assets/folio/1.jpg";
 import { Nav } from "@/components/site/Nav";
 import { Gallery } from "@/components/site/Gallery";
@@ -145,7 +146,7 @@ function Index() {
           <div className="hero-overlay absolute inset-0" />
           <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 pt-32 sm:pb-24">
             <img
-              src="/favicon.png"
+              src={logoGarage}
               alt="Логото на Niksuna's AutoLab"
               width={88}
               height={88}
