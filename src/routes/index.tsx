@@ -10,7 +10,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 
-import heroGarage from "@/assets/hero-garage.jpg";
+import heroGarage from "@/assets/car.jpg";
 import ogPhoto from "@/assets/folio/1.jpg";
 import { Nav } from "@/components/site/Nav";
 import { Gallery } from "@/components/site/Gallery";
