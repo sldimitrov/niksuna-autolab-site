@@ -164,7 +164,7 @@ function Index() {
               Фолиране · PPF · Претапициране на тавани — Айтос
             </p>
             <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
-              Професионален автодетайлинг — PPF защита, фолиране на автостъкла и претапициране на
+              Фолиране, PPF и тунинг — фолиране на автостъкла, PPF защита и претапициране на
               интериор.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
