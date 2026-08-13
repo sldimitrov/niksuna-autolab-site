@@ -164,11 +164,10 @@ function Index() {
               <span className="text-primary">AutoLab</span>
             </h1>
             <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-foreground/80">
-              Фолиране · PPF · Претапициране на тавани — Айтос
+              • Фолиране на автостъкла и автотапицерски услуги - Айтос
             </p>
             <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
-              Фолиране, PPF и тунинг — фолиране на автостъкла, PPF защита и претапициране на
-              интериор.
+              Затъмняване на стъкла • защитно фолио - PPF • полиране на фарове • претапециране на тавани, кори, колонки, сенници
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
