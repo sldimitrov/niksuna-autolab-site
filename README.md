@@ -72,7 +72,7 @@ TECHNICAL NOTES:
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://niksuna-autolab-site.lovable.app
+**Live app**: https://www.niksuna-autolab.com
 
 ## Build with Lovable
 

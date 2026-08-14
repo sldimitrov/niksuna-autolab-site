@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Armchair,
@@ -12,17 +13,18 @@ import {
 
 import heroGarage from "@/assets/car.jpg";
 import logoGarage from "@/assets/logo.jpg";
-import ogPhoto from "@/assets/folio/1.jpg";
 import { Nav } from "@/components/site/Nav";
 import { Gallery } from "@/components/site/Gallery";
 import { ContactSection, LAT, LNG, PHONE, PHONE_TEL } from "@/components/site/ContactSection";
+import { Skeleton } from "@/components/ui/skeleton";
+import { galleryQueryOptions } from "@/data/gallery";
 import { Phone } from "lucide-react";
 
-const SITE = "https://niksuna-autolab-site.lovable.app";
+const SITE = "https://www.niksuna-autolab.com";
 const title = "Фолиране и претапициране в Айтос | Niksuna's AutoLab";
 const description =
   "Фолиране на автостъкла, защитно фолио (PPF), претапициране на автотавани, chrome delete и полиране на фарове в Айтос, обл. Бургас. Обадете се: 0885 373 039.";
-const ogImage = `${SITE}${ogPhoto}`;
+const ogImage = `${SITE}${heroGarage}`;
 
 const localBusinessLd = {
   "@context": "https://schema.org",
@@ -56,6 +58,9 @@ const localBusinessLd = {
 };
 
 export const Route = createFileRoute("/")({
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(galleryQueryOptions());
+  },
   head: () => ({
     meta: [
       { title },
@@ -131,6 +136,27 @@ const trust = [
   },
 ];
 
+function GallerySkeleton() {
+  return (
+    <section className="border-t border-border py-20">
+      <div className="mx-auto max-w-6xl px-4">
+        <Skeleton className="h-9 w-64" />
+        <Skeleton className="mt-6 h-5 w-full max-w-xl" />
+        <div className="mt-8 flex flex-wrap gap-2.5">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} className="h-11 w-32" />
+          ))}
+        </div>
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <Skeleton key={i} className="aspect-square w-full rounded-sm" />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background">
@@ -167,7 +193,8 @@ function Index() {
               • Фолиране на автостъкла и автотапицерски услуги - Айтос
             </p>
             <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
-              Затъмняване на стъкла • защитно фолио - PPF • полиране на фарове • претапециране на тавани, кори, колонки, сенници
+              Затъмняване на стъкла • защитно фолио - PPF • полиране на фарове • претапециране на
+              тавани, кори, колонки, сенници
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
@@ -206,7 +233,9 @@ function Index() {
           </div>
         </section>
 
-        <Gallery />
+        <Suspense fallback={<GallerySkeleton />}>
+          <Gallery />
+        </Suspense>
 
         {/* ЗАЩО НАС */}
         <section id="why" className="border-t border-border py-20">
