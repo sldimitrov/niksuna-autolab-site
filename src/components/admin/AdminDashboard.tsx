@@ -1,6 +1,7 @@
 import * as React from "react";
+import { Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { LogOut, Trash2, UploadCloud } from "lucide-react";
+import { ExternalLink, LogOut, Trash2, UploadCloud } from "lucide-react";
 import { toast } from "sonner";
 
 import { supabase } from "@/lib/supabase";
@@ -99,9 +100,21 @@ export function AdminDashboard() {
       <header className="border-b border-border">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5">
           <h1 className="text-xl font-semibold">Управление на снимки</h1>
-          <Button variant="outline" size="sm" onClick={() => supabase.auth.signOut()}>
-            <LogOut size={16} /> Изход
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-red-600 hover:bg-red-50 hover:text-red-700"
+              asChild
+            >
+              <Link to="/">
+                <ExternalLink size={16} /> Към сайта
+              </Link>
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => supabase.auth.signOut()}>
+              <LogOut size={16} /> Изход
+            </Button>
+          </div>
         </div>
       </header>
 
