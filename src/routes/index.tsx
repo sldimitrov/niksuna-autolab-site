@@ -20,7 +20,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { galleryQueryOptions } from "@/data/gallery";
 import { Phone } from "lucide-react";
 
-const SITE = "https://niksuna-autolab-site.lovable.app";
+const SITE = "https://www.niksuna-autolab.com";
 const title = "Фолиране и претапициране в Айтос | Niksuna's AutoLab";
 const description =
   "Фолиране на автостъкла, защитно фолио (PPF), претапициране на автотавани, chrome delete и полиране на фарове в Айтос, обл. Бургас. Обадете се: 0885 373 039.";
