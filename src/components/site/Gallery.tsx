@@ -1,20 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Phone, X } from "lucide-react";
 
-import { categories, categoryById, type CategoryId, shots } from "@/data/gallery";
+import { categories, categoryById, type CategoryId, galleryQueryOptions } from "@/data/gallery";
 
 import { PHONE_TEL } from "./ContactSection";
 
 const INITIAL_VISIBLE = 12;
 
 export function Gallery() {
+  const { data: shots } = useSuspenseQuery(galleryQueryOptions());
   const [filter, setFilter] = useState<CategoryId | "all">("all");
   const [active, setActive] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   const visible = useMemo(
     () => (filter === "all" ? shots : shots.filter((s) => s.categoryId === filter)),
-    [filter],
+    [filter, shots],
   );
 
   const displayed = showAll ? visible : visible.slice(0, INITIAL_VISIBLE);
