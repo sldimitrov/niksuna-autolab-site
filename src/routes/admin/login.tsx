@@ -1,9 +1,10 @@
 import * as React from "react";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import { ArrowLeft } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
 import { useSupabaseSession } from "@/hooks/use-supabase-session";
@@ -56,7 +57,7 @@ function AdminLogin() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-4">
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>Вход в администрация</CardTitle>
@@ -98,6 +99,17 @@ function AdminLogin() {
           </Form>
         </CardContent>
       </Card>
+      <Button
+        variant="ghost"
+        size="sm"
+        className="text-red-600 hover:bg-red-50 hover:text-red-700"
+        asChild
+      >
+        <Link to="/">
+          <ArrowLeft />
+          Към сайта
+        </Link>
+      </Button>
     </div>
   );
 }
